@@ -1,0 +1,847 @@
+/* ==========================================================================
+   Internly: one stylesheet, written by hand.
+   Sections: 1 tokens · 2 reset/base · 3 layout · 4 header · 5 buttons · 6 forms ·
+             7 cards & badges · 8 states · 9 listings page · 10 detail · 11 home · 12 AI · 13 responsive
+   ========================================================================== */
+
+/* 1. DESIGN TOKENS: colours/spacing defined once as CSS custom properties (variables) ---------- */
+:root {
+  --navy: #142d4c;
+  --navy-2: #385170;
+  --sky: #8bc5eb;
+  --brand: #1f75df;
+  --brand-dark: #1559b0;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --danger: #dc2626;
+  --success: #047857;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgb(15 23 42 / 0.1);
+  --shadow-lg: 0 8px 20px rgb(15 23 42 / 0.12);
+  --font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. RESET / BASE ----------------------------------------------------------------------------- */
+/* border-box: width/height include padding+border, so sizes behave the way you expect */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex; /* sticky footer: header + main + footer stacked, main takes the free space */
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+h1,
+h2,
+h3 {
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+p {
+  margin: 0 0 0.75rem;
+}
+a {
+  color: var(--brand);
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* visible keyboard focus everywhere (accessibility) */
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  z-index: 100;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* 3. LAYOUT ----------------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+.container--narrow {
+  max-width: 28rem;
+}
+.container--medium {
+  max-width: 48rem;
+}
+.stack > * + * {
+  margin-top: 1rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.row--between {
+  justify-content: space-between;
+}
+.muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.hidden {
+  display: none !important;
+}
+
+/* 4. HEADER / NAV (Flexbox) -------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--navy);
+  box-shadow: var(--shadow);
+}
+.site-header__inner {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--sky);
+  text-decoration: none;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: #fff;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav a:not(.btn) {
+  color: rgb(255 255 255 / 0.9);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.nav a:not(.btn):hover,
+.nav a[aria-current="page"] {
+  color: var(--sky);
+}
+.site-footer {
+  background: var(--navy);
+  color: rgb(255 255 255 / 0.7);
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 1.5rem 1rem;
+}
+
+/* 5. BUTTONS ---------------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  /* transitions animate ONLY transform/filter/background: cheap for the browser (no layout work) */
+  transition:
+    transform 0.12s ease,
+    filter 0.15s ease,
+    background-color 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn--primary {
+  background: linear-gradient(90deg, var(--sky), var(--brand));
+  color: var(--navy);
+}
+.btn--primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.btn--secondary {
+  background: #fff;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+.btn--secondary:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+.btn--danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn--danger:hover:not(:disabled) {
+  background: #b91c1c;
+}
+.btn--small {
+  padding: 0.35rem 0.9rem;
+}
+.btn--block {
+  width: 100%;
+}
+
+/* 6. FORMS ------------------------------------------------------------------------------------ */
+.field {
+  margin-bottom: 1rem;
+}
+.field label,
+.field legend {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+.field .required {
+  color: var(--danger);
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+}
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+[aria-invalid="true"] {
+  border-color: var(--danger) !important;
+}
+.field-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
+}
+.hint {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+/* two big "student / company" choice tiles built from radio inputs */
+.choice-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.choice-tiles label {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+  text-transform: capitalize;
+  margin: 0;
+}
+.choice-tiles input {
+  position: absolute;
+  opacity: 0;
+}
+.choice-tiles input:checked + label {
+  border-color: var(--brand);
+  background: rgb(139 197 235 / 0.2);
+  color: var(--navy);
+}
+.choice-tiles input:focus-visible + label {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+.form-grid {
+  display: grid;
+  gap: 0 1rem;
+  grid-template-columns: 1fr;
+}
+
+/* 7. CARDS & BADGES --------------------------------------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+.card--padded {
+  padding: 2rem;
+}
+.card--danger {
+  border-color: #fecaca;
+}
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.15rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge--pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+.badge--accepted {
+  background: #d1fae5;
+  color: #065f46;
+}
+.badge--rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chip {
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.75rem;
+}
+.chip--skill {
+  background: rgb(139 197 235 / 0.3);
+  color: var(--navy);
+  border-radius: 4px;
+  font-weight: 500;
+}
+.chip--match {
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* 8. STATES: alert / empty / spinner / skeleton ----------------------------------------------- */
+.alert {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+.alert--success {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+  color: #065f46;
+}
+.alert--warn {
+  border-color: #fde68a;
+  background: #fffbeb;
+  color: #92400e;
+}
+.empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+.empty__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #475569;
+}
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 0;
+  color: var(--muted);
+}
+.spinner::before {
+  content: "";
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #cbd5e1;
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.skeleton {
+  height: 14rem;
+  border-radius: var(--radius);
+  background: #e2e8f0;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* 9. LISTINGS PAGE: filter bar + CSS Grid of cards ----------------------------------------------- */
+.filters {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  align-items: end;
+}
+.filters .field {
+  margin: 0;
+}
+/* auto-fill grid: as many 17rem+ columns as fit; the browser does all the wrapping maths */
+.card-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+}
+.card-grid.is-loading {
+  opacity: 0.6;
+}
+.listing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: 100%;
+  /* only transform + box-shadow animate: smooth hover with no re-layout of neighbours */
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.listing-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+.listing-card__company {
+  color: var(--brand);
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin: 0;
+}
+.listing-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+/* the whole card is clickable via a stretched link, but only ONE real link exists (good for a11y) */
+.listing-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.listing-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.listing-card h3 a:hover {
+  text-decoration: underline;
+}
+.listing-card__desc {
+  flex: 1;
+  color: #475569;
+  font-size: 0.875rem;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.pagination .page-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: #334155;
+}
+.pagination .page-btn:hover {
+  background: #f1f5f9;
+}
+.pagination .page-btn[aria-current="page"] {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* 10. DETAIL PAGE + list rows ------------------------------------------------------------------- */
+.detail-layout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.facts dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+.facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+.pre-line {
+  white-space: pre-line; /* keeps the company's line breaks without any HTML injection */
+}
+.item-list > li + li {
+  margin-top: 1rem;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.item h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+.item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.note-box {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  white-space: pre-line;
+}
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+.details-grid dt {
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+.details-grid dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* 11. HOME ------------------------------------------------------------------------------------- */
+.hero {
+  background: linear-gradient(135deg, var(--navy), var(--navy-2));
+  color: #fff;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 3.25rem); /* fluid type: scales with the viewport between min and max */
+  max-width: 48rem;
+  margin: 0 auto 1rem;
+}
+.hero h1 span {
+  color: var(--sky);
+}
+.hero p {
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+  color: rgb(255 255 255 / 0.8);
+  font-size: 1.1rem;
+}
+.feature-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.section {
+  padding: 4rem 1rem;
+}
+.section--white {
+  background: #fff;
+}
+.section h2.section__title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+.logo-wall {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 56rem;
+  margin-inline: auto;
+}
+.logo-wall li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.logo-wall img {
+  max-height: 3rem;
+  width: auto;
+  object-fit: contain;
+}
+.slider {
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
+}
+.slider__stage {
+  position: relative;
+  min-height: 11rem;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  /* cross-fade animates ONLY opacity: GPU-composited, so it never triggers reflow */
+  transition: opacity 0.4s ease;
+}
+.slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.slide__avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide blockquote {
+  margin: 1rem 0 0.5rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #334155;
+}
+.slide figcaption {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.slider__dots button {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  border: 0;
+  background: #cbd5e1;
+  cursor: pointer;
+  padding: 0;
+}
+.slider__dots button[aria-current="true"] {
+  background: var(--brand);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .btn,
+  .listing-card {
+    transition: none;
+  }
+  .skeleton,
+  .spinner::before {
+    animation-duration: 3s;
+  }
+}
+
+/* 12. AI MATCH ---------------------------------------------------------------------------------- */
+.match-card h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+.match-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.score {
+  text-align: right;
+}
+.score strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--brand);
+}
+.meter {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  overflow: hidden;
+  margin: 0.75rem 0;
+}
+.meter__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sky), var(--brand));
+  transform-origin: left;
+  /* animating transform (scaleX) instead of width avoids layout recalculation */
+  transition: transform 0.6s ease;
+}
+.cursor {
+  display: inline-block;
+  width: 0.4rem;
+  height: 1em;
+  margin-left: 2px;
+  background: var(--brand);
+  vertical-align: middle;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* 13. RESPONSIVE: mobile-first, so larger screens ADD rules ------------------------------------- */
+@media (max-width: 47.99rem) {
+  .nav-toggle {
+    display: block;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--navy);
+    padding: 0.5rem 1rem 1rem;
+  }
+  .nav.is-open {
+    display: flex;
+  }
+}
+@media (min-width: 40rem) {
+  .logo-wall {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-grid .span-2 {
+    grid-column: span 2;
+  }
+  .item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 48rem) {
+  .filters {
+    grid-template-columns: 1fr 12rem 10rem auto;
+  }
+}
+@media (min-width: 64rem) {
+  .detail-layout {
+    grid-template-columns: 1fr 22rem;
+  }
+}

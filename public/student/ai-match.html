@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI CV match | Internly</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header id="site-header" class="site-header"></header>
+
+    <main id="content" class="container container--medium">
+      <h1>AI CV match</h1>
+      <p>
+        Paste your CV and we rank open internships for you. The <strong>score</strong> is computed from the
+        skills your CV shares with each listing, so you can check it yourself. The AI only writes the
+        plain-language <strong>explanation</strong>.
+      </p>
+
+      <form id="cv-form" novalidate>
+        <div class="field">
+          <label for="cvText">Your CV (plain text)</label>
+          <textarea
+            id="cvText"
+            name="cvText"
+            rows="9"
+            maxlength="8000"
+            placeholder="Paste your CV here: education, skills, projects…"
+          ></textarea>
+          <p class="hint">Your CV is sent to the server only to compute this match and is not stored.</p>
+        </div>
+        <div class="row">
+          <button type="submit" id="start" class="btn btn--primary">Find my matches</button>
+          <button type="button" id="stop" class="btn btn--danger hidden">Stop</button>
+        </div>
+      </form>
+
+      <!-- aria-live: progress is announced to screen-reader users as results stream in -->
+      <div id="output" aria-live="polite" style="margin-top: 2rem">
+        <p id="provider-note" class="muted hidden"></p>
+        <div id="status"></div>
+        <ol id="matches" class="item-list"></ol>
+      </div>
+    </main>
+
+    <footer id="site-footer" class="site-footer"></footer>
+    <script type="module" src="/js/pages/ai-match.js"></script>
+  </body>
+</html>

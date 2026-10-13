@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Internship editor | Internly</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header id="site-header" class="site-header"></header>
+
+    <main id="content" class="container container--medium">
+      <h1 id="page-heading">Create internship</h1>
+      <div id="load-state"></div>
+
+      <form id="listing-form" class="card card--padded form-grid" novalidate>
+        <div id="form-error" class="span-2"></div>
+        <div class="field span-2">
+          <label for="title">Title <span class="required" aria-hidden="true">*</span></label>
+          <input id="title" name="title" type="text" maxlength="100" required />
+        </div>
+        <div class="field">
+          <label for="location">Location <span class="required" aria-hidden="true">*</span></label>
+          <input id="location" name="location" type="text" placeholder="e.g. Dubai" required />
+        </div>
+        <div class="field">
+          <label for="workType">Work type</label>
+          <select id="workType" name="workType">
+            <option value="on-site">On-site</option>
+            <option value="remote">Remote</option>
+            <option value="hybrid" selected>Hybrid</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="duration">Duration <span class="required" aria-hidden="true">*</span></label>
+          <input id="duration" name="duration" type="text" placeholder="e.g. 3 months" required />
+        </div>
+        <div class="field">
+          <label for="stipend">Stipend</label>
+          <input id="stipend" name="stipend" type="text" placeholder="e.g. AED 2000/month or Unpaid" />
+        </div>
+        <div class="field">
+          <label for="openings">Openings</label>
+          <input id="openings" name="openings" type="number" min="1" value="1" />
+        </div>
+        <div class="field">
+          <label for="skills">Skills</label>
+          <input id="skills" name="skills" type="text" />
+          <p class="hint">Comma separated, e.g. React, SQL, Git</p>
+        </div>
+        <div class="field">
+          <label for="startDate">Start date</label>
+          <input id="startDate" name="startDate" type="date" />
+        </div>
+        <div class="field">
+          <label for="deadline">Application deadline</label>
+          <input id="deadline" name="deadline" type="date" />
+        </div>
+        <div class="field span-2">
+          <label for="description">Description <span class="required" aria-hidden="true">*</span></label>
+          <textarea id="description" name="description" rows="7" required></textarea>
+        </div>
+        <div class="row span-2">
+          <button type="submit" id="save" class="btn btn--primary">Create internship</button>
+          <a class="btn btn--secondary" href="/company/listings">Cancel</a>
+        </div>
+      </form>
+    </main>
+
+    <footer id="site-footer" class="site-footer"></footer>
+    <script type="module" src="/js/pages/listing-edit.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find internships | Internly</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header id="site-header" class="site-header"></header>
+
+    <main id="content" class="container">
+      <h1>Find your internship</h1>
+
+      <form id="filters" class="filters" role="search" aria-label="Filters">
+        <div class="field">
+          <label for="q">Search by title, company or skill</label>
+          <input id="q" name="q" type="search" placeholder="Search…" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <select id="location" name="location">
+            <option value="">All locations</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="workType">Type</label>
+          <select id="workType" name="workType">
+            <option value="">All types</option>
+            <option value="on-site">On-site</option>
+            <option value="remote">Remote</option>
+            <option value="hybrid">Hybrid</option>
+          </select>
+        </div>
+        <button type="button" id="clear" class="btn btn--secondary">Clear</button>
+      </form>
+
+      <!-- aria-live: screen readers announce the new result count after each search -->
+      <p id="count" class="muted" aria-live="polite" style="margin-top: 1rem">&nbsp;</p>
+      <div id="results"></div>
+      <div id="pager"></div>
+    </main>
+
+    <footer id="site-footer" class="site-footer"></footer>
+    <script type="module" src="/js/pages/listings.js"></script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign up | Internly</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header id="site-header" class="site-header"></header>
+
+    <main id="content" class="container container--medium">
+      <div class="card card--padded">
+        <h1>Create your account</h1>
+
+        <fieldset class="field">
+          <legend>I am a…</legend>
+          <div class="choice-tiles">
+            <div>
+              <input type="radio" name="role" id="role-student" value="student" checked />
+              <label for="role-student">student</label>
+            </div>
+            <div>
+              <input type="radio" name="role" id="role-company" value="company" />
+              <label for="role-company">company</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div id="form-error"></div>
+
+        <!-- student form -->
+        <form id="student-form" novalidate class="form-grid">
+          <div class="field span-2">
+            <label for="s-name">Full name <span class="required" aria-hidden="true">*</span></label>
+            <input id="s-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="s-email">Email <span class="required" aria-hidden="true">*</span></label>
+            <input id="s-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="s-password">Password <span class="required" aria-hidden="true">*</span></label>
+            <input
+              id="s-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+            <p class="hint">At least 8 characters</p>
+          </div>
+          <div class="field">
+            <label for="s-university"
+              >University / college <span class="required" aria-hidden="true">*</span></label
+            >
+            <input id="s-university" name="university" type="text" required />
+          </div>
+          <div class="field">
+            <label for="s-year">Year of study</label>
+            <select id="s-year" name="yearOfStudy">
+              <option value="1">Year 1</option>
+              <option value="2">Year 2</option>
+              <option value="3">Year 3</option>
+              <option value="4">Year 4</option>
+              <option value="5">Year 5</option>
+            </select>
+          </div>
+          <div class="field span-2">
+            <label for="s-website">Personal website or LinkedIn</label>
+            <input id="s-website" name="website" type="url" placeholder="https://" />
+          </div>
+          <div class="span-2">
+            <button type="submit" class="btn btn--primary btn--block">Sign up as student</button>
+          </div>
+        </form>
+
+        <!-- company form -->
+        <form id="company-form" novalidate class="form-grid hidden">
+          <div class="field">
+            <label for="c-name">Company name <span class="required" aria-hidden="true">*</span></label>
+            <input id="c-name" name="name" type="text" required />
+          </div>
+          <div class="field">
+            <label for="c-contact">Contact person <span class="required" aria-hidden="true">*</span></label>
+            <input id="c-contact" name="contactName" type="text" required />
+          </div>
+          <div class="field">
+            <label for="c-email">Email <span class="required" aria-hidden="true">*</span></label>
+            <input id="c-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="c-password">Password <span class="required" aria-hidden="true">*</span></label>
+            <input
+              id="c-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+            <p class="hint">At least 8 characters</p>
+          </div>
+          <div class="field">
+            <label for="c-location">Location <span class="required" aria-hidden="true">*</span></label>
+            <input id="c-location" name="location" type="text" placeholder="e.g. Dubai" required />
+          </div>
+          <div class="field">
+            <label for="c-industry">Industry <span class="required" aria-hidden="true">*</span></label>
+            <input id="c-industry" name="industry" type="text" required />
+          </div>
+          <div class="span-2">
+            <button type="submit" class="btn btn--primary btn--block">Sign up as company</button>
+          </div>
+        </form>
+
+        <p class="muted" style="margin-top: 1.25rem; text-align: center">
+          Already registered? <a href="/login">Log in</a>
+        </p>
+      </div>
+    </main>
+
+    <footer id="site-footer" class="site-footer"></footer>
+    <script type="module" src="/js/pages/signup.js"></script>
+  </body>
+</html>
