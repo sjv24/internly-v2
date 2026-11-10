@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Internly</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../css/home-styles.css" />
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">INTERNLY</div>
+
+    <ul class="nav-links">
+      <li><a href="home-page.html">Home</a></li>
+      <li><a href="internship.html">Internships</a></li>
+      <li><a href="companies.html">Companies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" onclick="window.location.href='student-login.html'">Login</button>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to <i>Internly</i></h1>
+      <p>Your gateway to amazing internship opportunities.</p>
+      <button class="btn" onclick="window.location.href='signup.html'">Join Now</button>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature">
+        <h2>1. Find Internships</h2>
+        <p>Explore a variety of internships from top companies worldwide.</p>
+      </div>
+
+      <div class="feature">
+        <h2>2. Apply Easily</h2>
+        <p>Submit your application directly through our platform.</p>
+      </div>
+
+      <div class="feature">
+        <h2>3. Track Progress</h2>
+        <p>Stay updated on your application status in one place.</p>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+<section class="hero-2" id="why-us">
+  <h1>Why us?</h1>
+  <p>
+    Established in 2015, we’ve partnered with 1M+ companies worldwide to deliver exceptional internship opportunities.
+    Thousands of successful professionals began their careers with us, thanks to our strong industry ties, tailored
+    support, and commitment to launching futures that matter. Join today with just 3 easy steps.
+  </p>
+  <div class="logo-circle-container">
+    <img src="../images/meta.png" alt="meta" class="white-bg">
+    <img src="../images/google.png" alt="google" class="white-bg">
+    <img src="../images/amazon.png" alt="amazon" class="swhite-bg">
+    <img src="../images/nvidia.png" alt="nvidia" class="white-bg">
+    <img src="../images/microsoft.png" alt="microsoft" class="white-bg">
+    <img src="../images/apple.png" alt="apple" class="swhite-bg">
+    <img src="../images/tesla.png" alt="tesla" class="white-bg">
+    <img src="../images/linkedin.png" alt="linkedin" class="white-bg">
+    <img src="../images/intel.png" alt="intel" class="white-bg"> 
+    <img src="../images/ibm.png" alt="ibm" class="swhite-bg">
+  </div>
+</section>
+
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h1>What Our Users Say</h1>
+
+      <div class="testimonial-slider">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial active">
+          <img src="../images/person-1.jpg" alt="Aron" class="profile-img" />
+          <p>"Internly helped me land my dream internship at a Fortune 500 company!"</p>
+          <h4>Aron R., Marketing Intern</h4>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial">
+          <img src="../images/person-2.jpg" alt="Joana" class="profile-img" />
+          <p>"The process was smooth and the opportunities were real. Highly recommend."</p>
+          <h4>Joana D., Software Intern</h4>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial">
+          <img src="../images/person-3.jpg" alt="John" class="profile-img" />
+          <p>"Thanks to Internly, I started my career with confidence and clarity."</p>
+          <h4> John S., Business Analyst Intern</h4>
+        </div>
+
+      </div>
+
+      <!-- Dots for Testimonials -->
+      <div class="testimonial-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+  </div> <!-- End of Main -->
+
+  <!-- Footer -->
+  <footer>
+    <p>2025 Internly. All rights reserved.</p>
+  </footer>
+
+  <!-- Testimonial Slider Script -->
+  <script>
+    var testimonials = document.getElementsByClassName('testimonial');
+    var dots = document.getElementsByClassName('dot');
+    var index = 0;
+
+    setInterval(function () {
+      // Hide all testimonials and remove active dot
+      for (var i = 0; i < testimonials.length; i++) {
+        testimonials[i].classList.remove('active');
+        dots[i].classList.remove('active');
+      }
+
+      // Show current testimonial and dot
+      testimonials[index].classList.add('active');
+      dots[index].classList.add('active');
+
+      // Move to next
+      index = (index + 1) % testimonials.length;
+    }, 3000);
+  </script>
+
+</body>
+</html>

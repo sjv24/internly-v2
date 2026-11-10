@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Internships | Internly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/intern-styles.css">
+  <script src="../js/internship_not_logged.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">INTERNLY</div>
+
+    <ul class="nav-links">
+      <li><a href="home-page.html">Home</a></li>
+      <li><a href="internship.html">Internships</a></li>
+      <li><a href="companies.html">Companies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" onclick="window.location.href='student-login.html'">Login</button>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="Search by title or company..." />
+
+      <select id="locationFilter">
+        <option value="">All Locations</option>
+        <option value="Dubai">Dubai</option>
+        <option value="Abu Dhabi">Abu Dhabi</option>
+        <option value="Sharjah">Sharjah</option>
+        <option value="Fujairah">Fujairah</option>
+        <option value="Ajman">Ajman</option>
+        <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+        <option value="Umm Al Quwain">Umm Al Quwain</option>
+      </select>
+
+      <select id="typeFilter">
+        <option value="">All Types</option>
+        <option value="Remote">Remote</option>
+        <option value="On-Site">On-Site</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+
+      <button onclick="applyFilters()">Search</button>
+    </div>
+
+    <div id="internship-container"></div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2025 Internly. All rights reserved.</p>
+  </div>
+
+</body>
+</html>

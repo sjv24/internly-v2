@@ -1,0 +1,196 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #08121f;
+  color: #ddd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar/Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to right, #142d4c, #385170);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.logo {
+  color: #9fd3c7;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: default;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  color: #ececec;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: #ccc;
+  font-weight: 400;
+  position: relative;
+  padding: 0.2rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #9fd3c7;
+}
+
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  top: 100%;
+  left: 0;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #9fd3c7, #ececec);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::before,
+.nav-links li a.active::before {
+  width: 100%;
+}
+
+.visit-btn {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 3rem;
+  padding: 0.65rem 1.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.visit-btn:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+
+/* Internship Details Container */
+#internship-details {
+  max-width: 700px;
+  margin: 140px auto 40px;
+  background: #222c3c;
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 6px 20px rgba(20, 45, 76, 0.4);
+  color: #ececec;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Internship title */
+#internship-details h2 {
+  color: #9fd3c7;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Internship company name */
+#internship-details h3 {
+  color: #8bc5eb;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Details list */
+#internship-details ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 25px;
+}
+
+#internship-details ul li {
+  padding: 6px 0;
+  border-bottom: 1px solid #385170;
+}
+
+/* Paragraph/description */
+#internship-details p {
+  margin-bottom: 30px;
+  white-space: pre-line;
+}
+
+/* Form container */
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* File input label styling */
+.apply-form label {
+  font-weight: 600;
+  color: #9fd3c7;
+  margin-bottom: 6px;
+}
+
+/* File input styling */
+.apply-form input[type="file"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background-color: #142d4c;
+  color: #ececec;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Submit button */
+.apply-form button {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.apply-form button:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #internship-details {
+    margin: 120px 15px 30px;
+    padding: 20px;
+  }
+}

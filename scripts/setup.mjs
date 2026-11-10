@@ -11,4 +11,4 @@ if (fs.existsSync(env)) {
   fs.copyFileSync(path.join(root, ".env.example"), env);
   console.log("Created .env from .env.example");
 }
-console.log("\nNext: npm run dev   (starts the database and the app)");
+console.log("\nNext: npm run dev   (starts database + API + web app)");

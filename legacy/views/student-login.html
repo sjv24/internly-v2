@@ -1,0 +1,49 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/student-login-styles.css">
+    <title>Student Login</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">INTERNLY</div>
+        <ul class="nav-links">
+            <li><a href="home-page.html">Home</a></li>
+            <li><a href="internship.html">Internships</a></li>
+            <li><a href="companies.html">Companies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Login Box -->
+    <div class="container">
+        <div class="login-box">
+            <div class="login-image"></div>
+            <div class="login-form">
+                <h2>Login to Your Account</h2>
+                <h3>We're glad to see you back!</h3>
+                <form action="/student-login" method="POST">
+                    <label for="login-email">Enter your email</label>
+                    <input type="text" placeholder="someone@example.com" id="student-login-email" name="student-login-email">
+
+                    <label for="login-password">Enter your password</label>
+                    <input type="password" placeholder="Your password" id="student-login-password" name="student-login-password">
+
+                    <button type="submit">Login</button>
+                </form>
+
+                <div class="login-links">
+                    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                    <p>Not a student? <a href="company-login.html">Login as a company</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+  <footer>
+    <p>© 2025 Internly. All rights reserved.</p>
+  </footer>
+</body>
+</html>

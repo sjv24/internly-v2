@@ -1,0 +1,423 @@
+/* Reset & base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #08121f;
+  color: #ddd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header styles */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to right, #142d4c, #385170);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.logo {
+  color: #9fd3c7;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: default;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+.logo:hover {
+  transform: scale(1.1);
+  color: #ececec;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: #ccc;
+  font-weight: 400;
+  position: relative;
+  padding: 0.2rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #9fd3c7;
+}
+
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  top: 100%;
+  left: 0;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #9fd3c7, #ececec);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::before,
+.nav-links li a.active::before {
+  width: 100%;
+}
+
+.visit-btn {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 3rem;
+  padding: 0.65rem 1.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.visit-btn:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+
+/* Hero section */
+.hero,
+.hero-2 {
+  margin: 7rem auto 3rem;
+  padding: 4rem 1rem 3rem;
+  background: linear-gradient(to right, #142d4c, #385170);
+  color: #ececec;
+  border-radius: 1rem;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(20, 45, 76, 0.3);
+}
+
+.hero h1,
+.hero-2 h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.hero p,
+.hero-2 p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.hero-2{
+  margin-top: 3rem;
+}
+
+/* Button */
+.btn {
+  background: linear-gradient(90deg, #9fd3c7, #ececec);
+  color: #142d4c;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #ececec, #9fd3c7);
+}
+
+/* Features section */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 3rem 1rem 5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature {
+  background: #222c3c;
+  padding: 2rem;
+  border-radius: 12px;
+  flex: 1 1 280px;
+  box-shadow: 0 4px 20px rgba(20, 45, 76, 0.25);
+  text-align: center;
+  color: #ececec;
+}
+
+.feature h2 {
+  margin-bottom: 1rem;
+  color: #9fd3c7;
+}
+
+/* Testimonials section */
+.testimonials {
+  background: linear-gradient(to right, #142d4c, #385170);
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  margin-top: 5rem;
+  max-width: 900px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.testimonial-slider {
+  position: relative;
+  min-height: 250px; /* adjust to prevent layout shift */
+}
+
+.testimonial {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  font-size: 1.1rem;
+  padding: 1rem;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.testimonial.active {
+  opacity: 1;
+  position: relative;
+}
+
+.testimonial p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial h4 {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Testimonial profile images */
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #ccc;
+}
+
+.testimonial-dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #333;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #ccc;
+}
+
+.logo-circle-container {
+  display: flex;         /* necessary for gap to apply */
+  flex-wrap: wrap;       /* so logos go to next line if needed */
+  justify-content: center;
+  gap: 20px;             /* spacing between the circles */
+  margin-top: 20px;
+}
+
+.logo-circle-container img.white-bg,
+.logo-circle-container img.swhite-bg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  object-fit: contain;
+  padding: 5px;
+}
+
+/* Smaller image inside the same-sized circle */
+.logo-circle-container img.swhite-bg {
+  padding: 12px;
+}
+
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #385170, #142d4c);
+  color: #ececec;
+  font-weight: 600;
+  margin-top: auto;
+  box-shadow: 0 -2px 8px rgba(20, 45, 76, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .features {
+    flex-direction: column;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Main Container */
+.container {
+  max-width: 1000px;
+  margin: 120px auto 30px; /* prevent header overlap */
+  padding: 10px;
+}
+
+.none{
+  position: relative;
+  transform: translateX(-15%);
+  top: 50%;
+  left: 50%;
+}
+
+/* Internship Card Styles */
+.internship-card {
+  display: flex;
+  background: #222c3c;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(20, 45, 76, 0.25);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  position: relative; /* Can even remove this if not needed */
+}
+
+.card-content h3 {
+  margin-top: 0;
+  color: #9fd3c7;
+}
+
+.card-content ul {
+  padding-left: 18px;
+  margin-bottom: 40px;
+}
+
+.card-content ul li {
+  margin-bottom: 6px;
+  color: #ececec;
+}
+
+.btn-group {
+  margin-top: 20px;
+  text-align: right;  /* To keep button aligned right */
+}
+
+.btn {
+  background: linear-gradient(90deg, #9fd3c7, #ececec);
+  color: #142d4c;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 0.9em;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #ececec, #9fd3c7);
+  transform: scale(1.05);
+}
+
+.application-card {
+  background: #222c3c;
+  margin: 20px auto;
+  max-width: 700px;
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 20px rgba(20, 45, 76, 0.3);
+  color: #ddd;
+}
+
+.application-card h2 {
+  color: #9fd3c7;
+  margin-bottom: 8px;
+}
+
+.application-card h3 {
+  color: #8bc5eb;
+  margin-bottom: 12px;
+}
+
+.application-card p {
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .internship-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-group {
+    position: static;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

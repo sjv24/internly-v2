@@ -1,0 +1,133 @@
+<html>
+<head>
+  <title>Internly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/std-apply-styles.css">
+  <script src="../../js/student-apply.js"></script>
+</head>
+<style>
+/* Upload Resume Button */
+#upload-resume-btn {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-right: 10px;
+}
+
+#upload-resume-btn:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+/* Resume Modal Overlay */
+#resume-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(8, 18, 31, 0.85);
+  display: none;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Resume Modal Content */
+#resume-modal > div {
+  background: #222c3c;
+  padding: 2rem;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 12px;
+  color: #ececec;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Close Button */
+#close-resume-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.4rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+#resume-modal h3 {
+  color: #9fd3c7;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* File Input */
+#resume-upload-form input[type="file"] {
+  background: #142d4c;
+  color: #ececec;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Upload Button in Modal */
+#resume-upload-form button[type="submit"] {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#resume-upload-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+
+/* Upload Status Message */
+#resume-upload-status {
+  color: #9fd3c7;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">INTERNLY</div>
+
+    <ul class="nav-links">
+      <li><a href="student-dashboard.html">Home</a></li>
+      <li><a href="student_internship.html">Internships</a></li>
+      <li><a href="student-applications.html">Track Applications</a></li>
+      <li><a href="student_contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" id="user-button" onclick="window.location.href='/logout'">LOGOUT</button>
+      </li>
+    </ul>
+  </header>
+    <!-- Main Content -->
+     <div id="internship-details"></div>
+  </body>

@@ -1,0 +1,283 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #08121f;
+  color: #ddd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to right, #142d4c, #385170);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.logo {
+  color: #9fd3c7;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: default;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+.logo:hover {
+  transform: scale(1.1);
+  color: #ececec;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: #ccc;
+  font-weight: 400;
+  position: relative;
+  padding: 0.2rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #9fd3c7;
+}
+
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  top: 100%;
+  left: 0;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #9fd3c7, #ececec);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::before,
+.nav-links li a.active::before {
+  width: 100%;
+}
+
+.visit-btn {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 3rem;
+  padding: 0.65rem 1.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.visit-btn:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+
+/* Main Container */
+.container {
+  max-width: 1000px;
+  margin: 120px auto 30px; /* prevent header overlap */
+  padding: 10px;
+}
+
+/* Internship Card Styles */
+.internship-card {
+  display: flex;
+  background: #222c3c;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(20, 45, 76, 0.25);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  position: relative; /* Can even remove this if not needed */
+}
+
+.card-content h3 {
+  margin-top: 0;
+  color: #9fd3c7;
+}
+
+.card-content ul {
+  padding-left: 18px;
+  margin-bottom: 40px;
+}
+
+.card-content ul li {
+  margin-bottom: 6px;
+  color: #ececec;
+}
+
+.btn-group {
+  margin-top: 20px;
+  text-align: right;  /* To keep button aligned right */
+}
+
+.btn {
+  background: linear-gradient(90deg, #9fd3c7, #ececec);
+  color: #142d4c;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 0.9em;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #ececec, #9fd3c7);
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #385170, #142d4c);
+  color: #ececec;
+  font-weight: 600;
+  margin-top: auto;
+  box-shadow: 0 -2px 8px rgba(20, 45, 76, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .internship-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .internship-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-group {
+    position: static;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Filter/Search Bar Container */
+.filter-bar {
+  max-width: 1000px;
+  margin: 20px auto 40px;
+  display: flex;
+  gap: 15px;
+  background: #222c3c;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(20, 45, 76, 0.25);
+}
+
+/* Input & Select Styles */
+.filter-bar input[type="text"],
+.filter-bar select {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  color: #ececec;
+  background-color: #142d4c;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.filter-bar input[type="text"]::placeholder {
+  color: #9fd3c7aa;
+}
+
+.filter-bar input[type="text"]:focus,
+.filter-bar select:focus {
+  outline: none;
+  background-color: #1f75df;
+  color: #fff;
+  box-shadow: 0 0 8px #1f75dfaa;
+  cursor: text;
+}
+
+/* Filter Button */
+.filter-bar button {
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 3rem;
+  padding: 0.65rem 1.7rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(31, 117, 223, 0.6);
+}
+
+.filter-bar button:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.login-{
+  text-align: center;
+  margin-top: 50px;
+}
+
+#login-to-see{
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #222c3c;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(20, 45, 76, 0.25);
+  padding: 20px;
+}

@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Internly</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../../css/home-styles.css" />
+  <script src="../../js/company_internship_management.js"></script>
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">INTERNLY</div>
+
+    <ul class="nav-links">
+      <li><a href="companies-dashboard.html">Home</a></li>
+      <li><a href="company_internship.html">Internships</a></li>
+      <li><a href="companies-applications.html">Manage Listings</a></li>
+      <li><a href="companies-review-app.html">Browse Applications</a></li>
+      <li><a href="companies_contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" id="user-button" onclick="window.location.href='/logout'">LOGOUT</button>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main">
+
+        <!-- Hero Section -->
+        <section class="hero">
+        <h1>My Applications</h1>
+        <p>View your applications.</p>
+        <button class="btn" onclick="window.location.href='companies-create-internship.html'">Create Internships</button>
+        </section>
+        <div class="container">
+          <div id="internship-container"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Design tokens: the same navy / sky-blue palette as Internly v1, defined once. */
+@theme {
+  --color-navy: #142d4c;
+  --color-navy-2: #385170;
+  --color-sky: #8bc5eb;
+  --color-brand: #1f75df;
+  --color-brand-dark: #1559b0;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+  /* visible keyboard focus everywhere (accessibility) */
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+/* Reusable component classes: one place to restyle every button / input / card. */
+@layer components {
+  /* shared base for every button variant (a selector list, so utilities like px-4 can still override) */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-r from-sky to-brand text-navy hover:brightness-110 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-100;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400
+      focus:border-brand;
+  }
+  .input[aria-invalid="true"] {
+    @apply border-red-500;
+  }
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+}
+
+/* Testimonial cross-fade: animates ONLY opacity (and transform). Those two properties are
+   handled by the GPU compositor, so they never trigger layout (reflow) or repaint of the page. */
+.fade-slide {
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-slide {
+    transition: none;
+  }
+}

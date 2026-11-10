@@ -7,8 +7,8 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = path.join(root, ".pgdata");
-const PORT = Number(process.env.PGPORT ?? 54330);
-const DB_NAMES = ["internly_vanilla", "internly_vanilla_test"];
+const PORT = Number(process.env.PGPORT ?? 54329);
+const DB_NAMES = ["internly", "internly_test"];
 
 const pg = new EmbeddedPostgres({
   databaseDir: dataDir,
@@ -35,7 +35,7 @@ for (const name of DB_NAMES) {
   }
 }
 console.log(`[db] PostgreSQL ready on port ${PORT}`);
-console.log(`[db] DATABASE_URL=postgres://postgres:postgres@localhost:${PORT}/internly_vanilla`);
+console.log(`[db] DATABASE_URL=postgres://postgres:postgres@localhost:${PORT}/internly`);
 
 let stopping = false;
 async function stop() {

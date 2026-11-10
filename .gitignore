@@ -1,10 +1,16 @@
 node_modules/
+dist/
+coverage/
 .env
 *.log
 .DS_Store
-# local database files
-.pgdata/
 # private user uploads (resumes) must never be committed
-uploads/
+legacy/uploads/
+apps/api/uploads/
+
+# local dev database files
+.pgdata/
+
 # personal notes
+LEARNING_LOG.md
 *.private.md

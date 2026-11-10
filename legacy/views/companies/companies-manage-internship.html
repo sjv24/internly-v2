@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Internship</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/company-internship-management.css" />
+  <script src="../../js/manage_internship.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">INTERNLY</div>
+    <ul class="nav-links">
+      <li><a href="companies-dashboard.html">Home</a></li>
+      <li><a href="company_internship.html">Internships</a></li>
+      <li><a href="companies-applications.html">Manage Listings</a></li>
+      <li><a href="companies-review-app.html">Browse Applications</a></li>
+      <li><a href="companies_contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" onclick="window.location.href='/logout'">LOGOUT</button>
+      </li>
+    </ul>
+  </header>
+
+  <div class="container">
+    <div class="login-box">
+      <form class="login-form" id="manage-internship-form" method="POST" action="/update-internship">
+
+        <h2>Manage Internship</h2>
+
+        <!-- Hidden internship ID -->
+        <input type="hidden" id="i_id" name="i_id" />
+
+        <label for="c_name">Company Name</label>
+        <input type="text" id="c_name" name="c_name" readonly />
+
+        <label for="title">Internship Title</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="e.g., Dubai or Remote" />
+
+        <label for="type">Internship Type</label>
+        <select id="type" name="type">
+          <option value="on-site">On-site</option>
+          <option value="remote">Remote</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" placeholder="e.g., 3 months" />
+
+        <label for="openings">Openings</label>
+        <input type="number" id="openings" name="openings" min="1" />
+
+        <label for="start_date">Start Date</label>
+        <input type="date" id="start_date" name="start_date" />
+
+        <label for="deadline">Application Deadline</label>
+        <input type="date" id="deadline" name="deadline" />
+
+        <label for="stipend">Stipend / Pay</label>
+        <input type="text" id="stipend" name="stipend" placeholder="e.g., AED 2000/month or Unpaid" />
+
+        <label for="skills">Skills Required</label>
+        <input type="text" id="skills" name="skills" placeholder="e.g., JavaScript, Communication" />
+
+        <label for="description">Internship Description</label>
+        <textarea id="description" name="description" rows="5"></textarea>
+
+        <div id="msg" style="color: red; margin-bottom: 1rem;"></div>
+
+        <button type="submit">Update Internship</button>
+
+        <button id="deleteBtn" type="button" class="visit-btn">Delete Internship</button>
+
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Internly. All rights reserved.</p>
+  </footer>
+<script>
+  // Run after DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/internships")
+    .then(res => res.json())
+    .then(data => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id"));
+      const internship = data.find(i => i.i_id === id);
+
+      if (!internship) {
+        console.error("Internship not found for ID", id);
+        return;
+      }
+
+      // Fill form fields safely
+      document.getElementById("c_name").value = internship.c_name || "";
+      document.getElementById("title").value = internship.i_title || "";
+      document.getElementById("location").value = internship.i_location || "";
+      document.getElementById("type").value = internship.i_type?.toLowerCase() || "";
+      document.getElementById("duration").value = internship.i_duration || "";
+      document.getElementById("openings").value = internship.i_openings || "";
+      document.getElementById("stipend").value = internship.i_stipend || "";
+      document.getElementById("skills").value = internship.i_skills || "";
+      document.getElementById("description").value = internship.i_description || "";
+
+      // Only assign dates if they exist and are valid
+      if (internship.i_start_date) {
+        const startDate = internship.i_start_date.split("T")[0];
+        document.getElementById("start_date").value = startDate;  // underscore, not hyphen
+        }
+
+        if (internship.i_application_deadline) {
+        const deadline = internship.i_application_deadline.split("T")[0];
+        document.getElementById("deadline").value = deadline;
+        }
+    })
+    .catch(err => console.error("Error fetching internships:", err));
+});
+
+</script>
+
+
+</body>
+</html>

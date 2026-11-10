@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>Internly Student</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../../css/account-management-styles.css" />
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">INTERNLY</div>
+
+    <ul class="nav-links">
+      <li><a href="student-dashboard.html">Home</a></li>
+      <li><a href="student_internship.html">Internships</a></li>
+      <li><a href="student-applications.html">Track Applications</a></li>
+      <li><a href="student_contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" id="user-button" onclick="window.location.href='/logout'">LOGOUT</button>
+      </li>
+    </ul>
+  </header>
+
+      <div class="container">
+        <div class="login-box">
+            <div class="login-form">
+              <h2>Account Management</h2><br>
+              
+              <form action="/updateAccount" method="POST">
+                <label for="name">Full Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="John Doe"><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="john@example.com"><br>
+
+                <label for="password">Change Password:</label><br>
+                <input type="password" id="password" name="password" placeholder="New Password"><br>
+
+                <label>Account Type:</label><br>
+                <input type="text" value="Student" disabled><br>
+
+                <button type="submit" name="action" value="update">Update Account</button>
+              </form>
+              <form action="/deleteAccount" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+                <button type="submit" style="color: red; margin-left: 43rem; margin-top: -6rem;">Delete My Account</button>
+              </form>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<html>
+<head>
+  <title>Create Internship</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/company-login-styles.css" />
+
+  <style>
+    .create-form-container {
+      margin-top: 8rem;
+      margin-bottom: 8rem;
+      max-width: 1000px;
+      margin-inline: auto;
+      background: linear-gradient(to right, #142d4c, #385170);
+      color: #ddd;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .create-form-container h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #ececec;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      grid-column: span 2;
+    }
+
+    button {
+      grid-column: span 2;
+      background: linear-gradient(90deg, #8bc5eb, #1f75df);
+      color: #142d4c;
+      border: none;
+      border-radius: 3rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #1f75df, #8bc5eb);
+      transform: scale(1.05);
+    }
+
+    input:disabled {
+    background-color: #eee;  /* light grey */
+    color: #888;             /* darker grey text */
+    cursor: not-allowed;     /* show disabled cursor */
+  }
+
+    @media (max-width: 768px) {
+      textarea, button {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (reuse) -->
+  <header>
+    <div class="logo">INTERNLY</div>
+    <ul class="nav-links">
+      <li><a href="companies-dashboard.html">Home</a></li>
+      <li><a href="company_internship.html">Internships</a></li>
+      <li><a href="companies-applications.html">Manage Listings</a></li>
+      <li><a href="companies-review-app.html">Browse Applications</a></li>
+      <li><a href="companies_contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" id="user-button" onclick="window.location.href='/logout'">LOGOUT</button>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Create Internship Form -->
+  <div class="create-form-container">
+    <h2>Create New Internship</h2>
+    <form action="/create-internship" method="post">
+      <div>
+        <label for="c_name">Company Name</label>
+        <input type="text" id="c_name" name="c_name" readonly />
+      </div>
+
+      <div>
+        <label for="title">Internship Title</label>
+        <input type="text" id="title" name="title" required />
+      </div>
+
+      <div>
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="e.g., Dubai or Remote" />
+      </div>
+
+      <div>
+        <label for="type">Internship Type</label>
+        <select id="type" name="type">
+          <option value="on-site">On-site</option>
+          <option value="remote">Remote</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" placeholder="e.g., 3 months" />
+      </div>
+
+      <div>
+        <label for="openings">Openings</label>
+        <input type="number" id="openings" name="openings" min="1" />
+      </div>
+
+      <div>
+        <label for="start-date">Start Date</label>
+        <input type="date" id="start-date" name="start_date" />
+      </div>
+
+      <div>
+        <label for="deadline">Application Deadline</label>
+        <input type="date" id="deadline" name="deadline" />
+      </div>
+
+      <div>
+        <label for="stipend">Stipend / Pay</label>
+        <input type="text" id="stipend" name="stipend" placeholder="e.g., AED 2000/month or Unpaid" />
+      </div>
+
+      <div>
+        <label for="skills">Skills Required</label>
+        <input type="text" id="skills" name="skills" placeholder="e.g., JavaScript, Communication" />
+      </div>
+
+      <div style="grid-column: span 2;">
+        <label for="description">Internship Description</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+
+      <button type="submit">Create Internship</button>
+    </form>
+  </div>
+
+  <script>
+  // Fetch session data to pre-fill company name (disabled input)
+  fetch("/session-data")
+    .then(res => res.json())
+    .then(data => {
+      //console.log(data);  // check what you get here
+      // Make sure only companies see this filled
+      if (data.userType === "company") {
+        document.getElementById("c_name").value = data.username;
+      }
+    })
+    .catch(err => console.error("Error loading session:", err));
+</script>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Internly. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

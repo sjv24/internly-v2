@@ -1,0 +1,121 @@
+<html>
+<head>
+  <title>Internly - Contact</title>
+  <link rel="stylesheet" href="../css/student-login-styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+      <header>
+    <div class="logo">INTERNLY</div>
+
+    <ul class="nav-links">
+      <li><a href="companies-dashboard.html">Home</a></li>
+      <li><a href="company_internship.html">Internships</a></li>
+      <li><a href="companies-applications.html">Manage Listings</a></li>
+      <li><a href="companies-review-app.html">Browse Applications</a></li>
+      <li><a href="companies_contact.html">Contact</a></li>
+      <li>
+        <button class="visit-btn" id="user-button" onclick="window.location.href='/logout'">LOGOUT</button>
+      </li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <h1>CONTACT US</h1>
+      <form action="#" method="POST" class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Internly. All rights reserved.</p>
+  </footer>
+
+<style>
+.contact-section {
+  max-width: 420px;
+  margin: 8em auto 2em auto;
+  background: linear-gradient(to right, #142d4c, #385170);
+  padding: 2.5em 2em 2em 2em;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #ececec;
+}
+
+.contact-section h1 {
+  text-align: center;
+  margin-bottom: 1.5em;
+  color: #ececec;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #cce3e9;
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75em 1em;
+  margin-bottom: 1.2em;
+  border: 1px solid #385170;
+  border-radius: 8px;
+  background: #203549;
+  color: #ececec;
+  font-size: 1em;
+  transition: border 0.2s, background 0.2s;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #9fd3c7;
+  outline: none;
+  background: #2a436f;
+}
+
+.contact-form button[type="submit"] {
+  width: 100%;
+  padding: 0.9em 0;
+  background: linear-gradient(90deg, #8bc5eb, #1f75df);
+  color: #142d4c;
+  border: none;
+  border-radius: 3rem;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 1px;
+  margin-top: 0.5em;
+}
+
+.contact-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #1f75df, #8bc5eb);
+  transform: scale(1.04);
+}
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 1.2em 0.5em 1.5em 0.5em;
+    margin: 6em 0.5em 2em 0.5em;
+  }
+}
+</style>
+</body>
+</html>
